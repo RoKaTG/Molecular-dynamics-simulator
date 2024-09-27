@@ -10,3 +10,14 @@ const std::vector<double>& Particle::getPosition() const { return m_position; }
 const std::vector<double>& Particle::getVelocity() const { return m_velocity; }
 const std::vector<double>& Particle::getForce() const { return m_force; }
 double Particle::getMass() const { return m_mass; }
+
+void Particle::setPosition(const std::vector<double>& position) { m_position = position; }
+void Particle::setVelocity(const std::vector<double>& velocity) { m_velocity = velocity; }
+void Particle::setForce(const std::vector<double>& force) { m_force = force; }
+void Particle::resetForce() { m_force = {0.0, 0.0, 0.0}; }
+
+void Particle::addForce(const std::vector<double>& force) {
+    for (size_t i = 0; i < m_force.size(); ++i) {
+        m_force[i] += force[i];
+    }
+}
