@@ -10,6 +10,7 @@ find_package(OpenMP REQUIRED)
 
 #
 include_directories(${MPI_INCLUDE_PATH})
+include_directories(${CMAKE_SOURCE_DIR}/include)
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
 #
