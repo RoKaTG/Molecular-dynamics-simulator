@@ -11,6 +11,8 @@ public:
     std::vector<f64> computeForce(const Particle& p1, const Particle& p2) const override;
     f64 computePotentialEnergy(const Particle& p1, const Particle& p2) const override;
 
+    i64 getFlopsPerInteraction() const override;
+
 private:
     f64 m_epsilon;
     f64 m_sigma;

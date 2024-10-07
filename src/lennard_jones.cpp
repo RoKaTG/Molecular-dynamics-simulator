@@ -38,3 +38,7 @@ f64 LennardJones::computePotentialEnergy(const Particle& p1, const Particle& p2)
     f64 s_over_r12 = s_over_r6 * s_over_r6;
     return 4 * m_epsilon * (s_over_r12 - s_over_r6);
 }
+
+i64 LennardJones::getFlopsPerInteraction() const {
+    return 30; 
+}

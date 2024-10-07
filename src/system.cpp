@@ -66,3 +66,7 @@ f64 System::computeTotalEnergy() const {
 
     return total_energy;
 }
+
+i64 System::getNumberOfInteractions() const {
+    return static_cast<i64>((m_particles.size() * (m_particles.size() - 1)) / 2);
+}

@@ -22,6 +22,7 @@ set(SOURCES
     src/system.cpp
     src/lennard_jones.cpp
     src/verlet_integrator.cpp
+    src/benchmark.cpp
     # Qt file clear
 )
 

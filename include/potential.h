@@ -12,6 +12,9 @@ public:
 
     virtual std::vector<f64> computeForce(const Particle& p1, const Particle& p2) const = 0;
     virtual f64 computePotentialEnergy(const Particle& p1, const Particle& p2) const = 0;
+
+    virtual i64 getFlopsPerInteraction() const = 0;
+    
 };
 
 #endif // POTENTIAL_H

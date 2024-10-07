@@ -22,6 +22,8 @@ public:
 
     f64 computeTotalEnergy() const;
 
+    i64 getNumberOfInteractions() const;
+
 private:
     std::vector<Particle> m_particles;
     std::shared_ptr<Potential> m_potential;
