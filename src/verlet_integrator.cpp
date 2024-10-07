@@ -1,6 +1,7 @@
-#include "verlet_integrator.h"
+#include "../include/verlet_integrator.h"
+#include "../include/types.h"
 
-void VerletIntegrator::integrate(System& system, double dt) {
+void VerletIntegrator::integrate(System& system, f64 dt) {
     auto& particles = system.getParticles();
 
     // Mise à jour des positions
@@ -9,9 +10,9 @@ void VerletIntegrator::integrate(System& system, double dt) {
         auto position = particles[i].getPosition();
         auto velocity = particles[i].getVelocity();
         auto force = particles[i].getForce();
-        double mass = particles[i].getMass();
+        f64 mass = particles[i].getMass();
 
-        std::vector<double> new_position(3);
+        std::vector<f64> new_position(3);
         for (size_t j = 0; j < 3; ++j) {
             new_position[j] = position[j] + velocity[j] * dt + 0.5 * force[j] / mass * dt * dt;
         }
@@ -26,9 +27,9 @@ void VerletIntegrator::integrate(System& system, double dt) {
     for (size_t i = 0; i < particles.size(); ++i) {
         auto velocity = particles[i].getVelocity();
         auto force = particles[i].getForce();
-        double mass = particles[i].getMass();
+        f64 mass = particles[i].getMass();
 
-        std::vector<double> new_velocity(3);
+        std::vector<f64> new_velocity(3);
         for (size_t j = 0; j < 3; ++j) {
             new_velocity[j] = velocity[j] + 0.5 * force[j] / mass * dt;
         }

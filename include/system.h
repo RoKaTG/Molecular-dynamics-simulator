@@ -1,10 +1,12 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
-#include "particle.h"
-#include "potential.h"
 #include <vector>
 #include <memory>
+
+#include "particle.h"
+#include "potential.h"
+#include "types.h"
 
 class System {
 public:
@@ -18,7 +20,7 @@ public:
 
     void computeForces();
 
-    double computeTotalEnergy() const;
+    f64 computeTotalEnergy() const;
 
 private:
     std::vector<Particle> m_particles;

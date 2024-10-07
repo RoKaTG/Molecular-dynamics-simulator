@@ -4,12 +4,13 @@
 #include "../include/system.h"
 #include "../include/lennard_jones.h"
 #include "../include/verlet_integrator.h"
+#include "../include/types.h"
 
-int main(int argc, char* argv[]) {
+i32 main(i32 argc, char* argv[]) {
     // Initialisation du système
     System system;
-    const int num_particles = 100;
-    const double box_size = 10.0;
+    const i32 num_particles = 100;
+    const f64 box_size = 10.0;
 
     // Générateur aléatoire
     std::random_device rd;
@@ -17,9 +18,9 @@ int main(int argc, char* argv[]) {
     std::uniform_real_distribution<> dis(0.0, box_size);
 
     // Création des particules avec des positions aléatoires
-    for (int i = 0; i < num_particles; ++i) {
-        std::vector<double> position = {dis(gen), dis(gen), dis(gen)};
-        std::vector<double> velocity = {0.0, 0.0, 0.0};
+    for (i32 i = 0; i < num_particles; ++i) {
+        std::vector<f64> position = {dis(gen), dis(gen), dis(gen)};
+        std::vector<f64> velocity = {0.0, 0.0, 0.0};
         Particle particle(position, velocity, 1.0);
         system.addParticle(particle);
     }
@@ -32,15 +33,15 @@ int main(int argc, char* argv[]) {
     VerletIntegrator integrator;
 
     // Boucle de simulation
-    const double dt = 0.005;
-    const int num_steps = 1000;
+    const f64 dt = 0.005;
+    const i32 num_steps = 1000;
 
-    for (int step = 0; step < num_steps; ++step) {
+    for (i32 step = 0; step < num_steps; ++step) {
         system.computeForces();
         integrator.integrate(system, dt);
 
         // Calcul de l'énergie totale
-        double total_energy = system.computeTotalEnergy();
+        f64 total_energy = system.computeTotalEnergy();
 
         // Affichage des informations de simulation
         if (step % 100 == 0) {

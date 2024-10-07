@@ -3,28 +3,30 @@
 
 #include <vector>
 
+#include "types.h"
+
 class Particle {
 public:
     Particle();
-    Particle(const std::vector<double>& position, const std::vector<double>& velocity, double mass);
+    Particle(const std::vector<f64>& position, const std::vector<f64>& velocity, f64 mass);
 
-    const std::vector<double>& getPosition() const;
-    const std::vector<double>& getVelocity() const;
-    const std::vector<double>& getForce() const;
-    double getMass() const;
+    const std::vector<f64>& getPosition() const;
+    const std::vector<f64>& getVelocity() const;
+    const std::vector<f64>& getForce() const;
+    f64 getMass() const;
 
-    void setPosition(const std::vector<double>& position);
-    void setVelocity(const std::vector<double>& velocity);
-    void setForce(const std::vector<double>& force);
+    void setPosition(const std::vector<f64>& position);
+    void setVelocity(const std::vector<f64>& velocity);
+    void setForce(const std::vector<f64>& force);
     void resetForce();
 
-    void addForce(const std::vector<double>& force);
+    void addForce(const std::vector<f64>& force);
 
 private:
-    std::vector<double> m_position;
-    std::vector<double> m_velocity;
-    std::vector<double> m_force;
-    double m_mass;
+    std::vector<f64> m_position;
+    std::vector<f64> m_velocity;
+    std::vector<f64> m_force;
+    f64 m_mass;
 };
 
 #endif // PARTICLE_H

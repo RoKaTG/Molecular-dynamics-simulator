@@ -1,5 +1,7 @@
-#include "system.h"
 #include <omp.h>
+
+#include "../include/system.h"
+#include "../include/types.h"
 
 System::System() : m_potential(nullptr) {}
 
@@ -36,20 +38,20 @@ void System::computeForces() {
             #pragma omp critical
             {
                 m_particles[i].addForce(force);
-                std::vector<double> negative_force = {-force[0], -force[1], -force[2]};
+                std::vector<f64> negative_force = {-force[0], -force[1], -force[2]};
                 m_particles[j].addForce(negative_force);
             }
         }
     }
 }
 
-double System::computeTotalEnergy() const {
-    double total_energy = 0.0;
+f64 System::computeTotalEnergy() const {
+    f64 total_energy = 0.0;
 
     // Énergie cinétique
     for (const auto& particle : m_particles) {
         auto velocity = particle.getVelocity();
-        double kinetic_energy = 0.5 * particle.getMass() * (
+        f64 kinetic_energy = 0.5 * particle.getMass() * (
             velocity[0]*velocity[0] + velocity[1]*velocity[1] + velocity[2]*velocity[2]
         );
         total_energy += kinetic_energy;
